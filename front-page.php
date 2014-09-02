@@ -11,43 +11,19 @@
  * @since Twenty Thirteen 1.0
  */
 
-get_header(); ?>
+get_header(); 
 
-    <div class="slider-home cf">
-		  <aside>
-			  <ul>
-				  <li>
-					  <figure><img src="<?php echo get_template_directory_uri(); ?>/images/upload/img_01.jpg" alt=" "></figure>
-						<div class="txt">
-						  <h3>Connecting Health & Learning</h3>
-							<a href="#" class="more">Learn more</a>
-						</div>
-					</li>
-					
-					<li>
-					  <figure><img src="<?php echo get_template_directory_uri(); ?>/images/upload/img_01.jpg" alt=" "></figure>
-						<div class="txt">
-						  <h3>Connecting Health & Learning</h3>
-							<a href="#" class="more">Learn more</a>
-						</div>
-					</li>
-				</ul>
-			</aside>
-			
-			<nav>
-			  <a href="#" class="prev">prev</a>
-				<a href="#" class="next">next</a>
-			</nav>
-		</div>
+$slider_count = intval(get_option('mso_count_slides'));
+$slider_count = $slider_count ? $slider_count : 5;
+
+$slidermain    = new SliderMain(array('posts_per_page' => $slider_count));
+$slidertwitter = new SliderTwitter();
+
+echo $slidermain->getHTML();
+?>
 		
 		<div class="enewsletter-home">
-		  <form>
-		    <span class="icon-mail">mail</span>
-			  <label>Sign up for our E-newsletter</label>
-			  <input type="text" value="Name" class="txt">
-				<input type="text" value="Email" class="txt">
-				<input type="submit" value="submit" class="submit">
-			</form>
+			<?php echo do_shortcode('[contact-form-7 id="72" title="Sign up for our E-newsletter"]'); ?>
 		</div>
 		
 		<div class="event-home cf">
@@ -98,28 +74,29 @@ get_header(); ?>
 		</div>
 		
 		<div class="tweet-home cf">
-		  <div class="center-box">
+		<?php echo $slidertwitter->getHTML(); ?>
+		  <!-- <div class="center-box">
 			  <aside>
-				  <ul>
+				  <ul class="slides">
 					  <li>
 						  <p>Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
 						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
 						</li>
 						<li>
-						  <p>Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
+						  <p>2 Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
 						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
 						</li>
 						<li>
-						  <p>Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
+						  <p>3 Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
 						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
 						</li>
 					</ul>
 				</aside>
 				
 				<nav>
-				  <a href="#" class="prev">prev</a>
-					<a href="#" class="next">next</a>
+				  	<a href="prev" onclick="actionSlide(event, this);" class="prev">prev</a>
+					<a href="next" onclick="actionSlide(event, this);" class="next">next</a>
 				</nav>
-			</div>
+			</div> -->
 		</div>
 <?php get_footer(); ?>

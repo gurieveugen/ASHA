@@ -525,3 +525,116 @@ function twentythirteen_customize_preview_js() {
 	wp_enqueue_script( 'twentythirteen-customizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'customize-preview' ), '20130226', true );
 }
 add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
+
+//     __  ___                        __   
+//    /  |/  /_  __   _________  ____/ /__ 
+//   / /|_/ / / / /  / ___/ __ \/ __  / _ \
+//  / /  / / /_/ /  / /__/ /_/ / /_/ /  __/
+// /_/  /_/\__, /   \___/\____/\__,_/\___/ 
+//        /____/                           
+
+require_once 'includes/__.php';
+
+// ==============================================================
+// HOOKS
+// ==============================================================
+add_image_size('slider-image', 1300, 419, true);
+add_action( 'wp_enqueue_scripts', 'customScriptsAndStyles');
+
+$ccollection_social_networks = new Controls\ControlsCollection(
+	array(		
+		new Controls\Text('Twitter URL', array('default-value' => 'http://www.twitter.com/whitehouse'), array('placeholder' => 'Enter your twitter account URL')),
+		new Controls\Text('Facebook URL', array('default-value' => 'http://www.facebook.com/whitehouse'), array('placeholder' => 'Enter your facebook page URL')),
+		new Controls\Text('Linkedin URL', array('default-value' => 'http://www.linkedin.com'), array('placeholder' => 'Enter your linkedin account URL')),
+		new Controls\Text('Donate URL', array(), array('placeholder' => 'Enter your donate URL'))
+	)
+);
+
+$ccollection_main_slider = new Controls\ControlsCollection(
+	array(
+		new Controls\Text('Slider delay', array('default-value' => '5'), array('placeholder' => 'Delay')),
+		new Controls\Text('Count slides', array('default-value' => '5'), array('placeholder' => 'Count'))
+	)
+);
+
+$ccollection_slider_urls = new Controls\ControlsCollection(
+	array(
+		new Controls\Text('Lern more url', array('default-value' => '#'), array('placeholder' => 'Learn moer'))
+	)
+);
+
+$ccollection_twitter = new Controls\ControlsCollection(
+	array(		
+		new Controls\Text('Account', array('default-value' => 'whitehouse'), array('placeholder' => 'Twitter user')),
+		new Controls\Text('Tweet count', array('default-value' => 5), array('placeholder' => 'Count')),
+		new Controls\Text('Rotator delay', array('default-value' => 5), array('placeholder' => 'Twitter rotator delay')),
+		new Controls\Text('Consumer key', array('default-value' => 'aMY4Zsnn2KYi5TZkTCr9NlMuF'), array('placeholder' => 'Cunsumer key')),
+		new Controls\Text('Consumer secret', array('default-value' => 'vxkz9T7QQWUmqnJbkf7Eg8aHvFOCdcSMVMZrfbUPdNbw7nuYx9'), array('placeholder' => 'Consumer secret')),
+		new Controls\Text('OAuth token', array('default-value' => '2717095358-aRUmevpNvioRb52xkFYls0Q7ldf9cIo2PjJzsqG'), array('placeholder' => 'Token')),
+		new Controls\Text('OAuth token secret', array('default-value' => 'woklRm4IAnMK5dEkXCAlSboirK4qlUmYcYNkRVddPIbl4'), array('placeholder' => 'Token secret'))
+	)
+);
+
+$section_social_networks = new Admin\Section('Social networks', array('prefix' => 'sn_'), $ccollection_social_networks);
+$section_main_slider     = new Admin\Section('Main slider options', array('prefix' => 'mso_'), $ccollection_main_slider);
+$section_twitter         = new Admin\Section('Twitter rotator', array('prefix' => 'tw_r_'), $ccollection_twitter);
+
+$theme_settings          = new Admin\Page('Theme settings', array(), array($section_social_networks, $section_main_slider, $section_twitter));
+$post_type_slider        = new Admin\PostType('Slider', array('icon_code' => 'f03e', 'supports' => array('title', 'editor', 'thumbnail', 'excerpt')));
+$meta_box_slider         = new Admin\MetaBox('Additional options', array('post_type' => 'slider'), $ccollection_slider_urls);
+
+
+/**
+ * Add some Scripts or Styles
+ */
+function customScriptsAndStyles()
+{
+	// ==============================================================
+	// Add scripts
+	// ==============================================================
+	wp_enqueue_script("jquery"); 
+	wp_enqueue_script('css_browser_selector', get_template_directory_uri().'/js/css_browser_selector.js', array('jquery'));
+	wp_enqueue_script('formstyler', get_template_directory_uri().'/js/jquery.formstyler.js', array('jquery'));
+	wp_enqueue_script('flexslider', get_template_directory_uri().'/js/jquery.flexslider-min.js', array('jquery'));
+	wp_enqueue_script('main', get_template_directory_uri().'/js/main.js', array('jquery', 'flexslider'));
+	wp_enqueue_script('boxer', get_template_directory_uri().'/js/jquery.fs.boxer.js', array('jquery'));
+	// ==============================================================
+	// Add styles
+	// ==============================================================
+	wp_enqueue_style('boxer', get_template_directory_uri().'/css/jquery.fs.boxer.css');
+	// ==============================================================
+	// Add some veriables 
+	// ==============================================================
+	
+	$slider_delay  = intval(get_option('mso_slider_delay'));
+	$slider_count  = intval(get_option('mso_count_slides'));
+	$rotator_delay = intval(get_option('tw_r_rotator_delay'));
+	$slider_delay  = $slider_delay ? $slider_delay : 5;
+	$slider_count  = $slider_count ? $slider_count : 5;
+	$rotator_delay = $rotator_delay ? $rotator_delay : 5;
+
+	$l10n = array(
+		'slider_delay'    => $slider_delay,
+		'slider_count'    => $slider_count,
+		'slider'          => '.slider-home aside',
+		'twitter_rotator' => '.center-box aside',
+		'rotator_delay'   => $rotator_delay
+	);
+
+	wp_localize_script('main', 'defaults', $l10n );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -8,6 +8,20 @@
  * @subpackage Twenty_Thirteen
  * @since Twenty Thirteen 1.0
  */
+
+$btn_twitter  = (string) get_option('sn_twitter_url');
+$btn_facebook = (string) get_option('sn_facebook_url');
+$btn_linkedin = (string) get_option('sn_linkedin_url');
+$btn_donate   = (string) get_option('sn_donate_url');
+
+$buttons = array(
+	!empty($btn_twitter) ? sprintf('<li class="tweet"><a href="%s" target="_blank">tweet</a></li>', $btn_twitter) : '',
+	!empty($btn_facebook) ? sprintf('<li class="facebook"><a href="%s" target="_blank">facebook</a></li>', $btn_facebook) : '',
+	!empty($btn_linkedin) ? sprintf('<li class="in"><a href="%s" target="_blank">in</a></li>', $btn_linkedin) : ''	
+);
+
+$btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" target="_blank">DONATE</a>', $btn_donate) : '';
+
 ?><!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -28,9 +42,6 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
-<script charset="utf-8" type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/css_browser_selector.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.min.js"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/jquery.formstyler.js"></script>
 <script>
 	(function($) {
 	$(function() {
@@ -41,23 +52,26 @@
 </head>
 
 <body <?php body_class(); ?>>
+<div id="modal-search" style="display: none; width: 200px;">
+    <div class="content" style="width: 500px;">
+    	<?php get_search_form(TRUE); ?>
+    </div>
+</div>
 <div class="global-box cf">
   <header id="header" class="cf">
     <div class="center-box">
 		  <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 			<div class="top-header">
-			  <a href="#" class="login-link">MEMBER LOGIN</a>
+			  	<a href="#" class="login-link">MEMBER LOGIN</a>
 				<ul class="share-header">
-				  <li class="tweet"><a href="#">tweet</a></li>
-					<li class="facebook"><a href="#">facebook</a></li>
-					<li class="in"><a href="#">in</a></li>
+					<?php echo implode('', $buttons); ?>
 				</ul>
-				<a href="#" class="btn-donate">DONATE</a>
+				<?php echo $btn_donate; ?>
 			</div>
 			
 			<nav class="main-menu cf">
 			  <div class="search-box">
-				  <a href="#" class="btn-search">Search</a>
+					<a href="#modal-search" class="btn-search boxer">Search</a>
 				</div>
 			  <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false ) ); ?>
 			</nav>
