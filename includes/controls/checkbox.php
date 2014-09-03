@@ -58,6 +58,6 @@ class Checkbox extends Control{
 	{
 		$value = (string) $value;		
 
-		return $value == '' ? '<i class="fa fa-circle-thin"></i>' : '<i class="fa fa-circle"></i>';		
+		return $value == '' ? '<i class="fa fa-toggle-off"></i>' : '<i class="fa fa-toggle-on"></i>';		
 	}
 }

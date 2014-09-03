@@ -20,19 +20,28 @@ $slidermain    = new SliderMain(array('posts_per_page' => $slider_count));
 $slidertwitter = new SliderTwitter();
 
 echo $slidermain->getHTML();
+
+$featured_event = getFeaturedEvent();
 ?>
 		
 		<div class="enewsletter-home">
 			<?php echo do_shortcode('[contact-form-7 id="72" title="Sign up for our E-newsletter"]'); ?>
 		</div>
 		
-		<div class="event-home cf">
-			<header>
-				<h2>Featured Event Headline</h2>
-			</header>
-			<div class="date">OCTOBER 9-11</div>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod vestibulum tellus sed sollicitudin. Vestibulum cursus venenatis vestibulum. Ut ut magna tempor, accumsan orci vel, mollis tortor. Praesent eu bibendum orci. Vestibulum ullamcorper malesuada ipsum sit amet malesuada.</p>
-		</div>
+		<?php
+		if($featured_event)
+		{
+		?>
+			<div class="event-home cf">
+				<header>
+					<h2><?php echo $featured_event->post_title; ?></h2>
+				</header>
+				<div class="date"><?php echo date('F j', strtotime(get_post_meta($featured_event->ID, 'aeo_event_date', TRUE))); ?></div>
+				<p><?php echo $featured_event->post_content; ?></p>
+			</div>
+		<?php
+		}
+		?>
 		
 		<div class="posts-home cf">
 		  <div class="center-box">
@@ -75,28 +84,5 @@ echo $slidermain->getHTML();
 		
 		<div class="tweet-home cf">
 		<?php echo $slidertwitter->getHTML(); ?>
-		  <!-- <div class="center-box">
-			  <aside>
-				  <ul class="slides">
-					  <li>
-						  <p>Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
-						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
-						</li>
-						<li>
-						  <p>2 Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
-						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
-						</li>
-						<li>
-						  <p>3 Cukjm sociis nato nati bus et is parturient monteseu tortor raesent as nato nati bus et is parturiccumsan.</p>
-						  <span><a href="#">#samplehashtag</a>  #example  |  9:00 AM  April 3</span>
-						</li>
-					</ul>
-				</aside>
-				
-				<nav>
-				  	<a href="prev" onclick="actionSlide(event, this);" class="prev">prev</a>
-					<a href="next" onclick="actionSlide(event, this);" class="next">next</a>
-				</nav>
-			</div> -->
 		</div>
 <?php get_footer(); ?>

@@ -563,6 +563,14 @@ $ccollection_slider_urls = new Controls\ControlsCollection(
 	)
 );
 
+$ccollection_event = new Controls\ControlsCollection(
+	array(
+		new Controls\Text('Destination URL', array('default-value' => '#'), array('placeholder' => 'Destination URL')),
+		new Controls\Text('Event date', array('show_description' => TRUE, 'description' => 'Please enter date in MySQL format Y-m-d. Example: 2014-08-23'), array('placeholder' => 'Enter event date')),
+		new Controls\Checkbox('Featured', array('label' => 'Featured event'))
+	)
+);
+
 $ccollection_twitter = new Controls\ControlsCollection(
 	array(		
 		new Controls\Text('Account', array('default-value' => 'whitehouse'), array('placeholder' => 'Twitter user')),
@@ -581,6 +589,8 @@ $section_twitter         = new Admin\Section('Twitter rotator', array('prefix' =
 
 $theme_settings          = new Admin\Page('Theme settings', array(), array($section_social_networks, $section_main_slider, $section_twitter));
 $post_type_slider        = new Admin\PostType('Slider', array('icon_code' => 'f03e', 'supports' => array('title', 'editor', 'thumbnail', 'excerpt')));
+$post_type_event         = new Admin\PostType('Event', array('icon_code' => 'f073'));
+$meta_box_event          = new Admin\MetaBox('Additional event options', array('post_type' => 'event', 'prefix' => 'aeo_'), $ccollection_event);
 $meta_box_slider         = new Admin\MetaBox('Additional options', array('post_type' => 'slider'), $ccollection_slider_urls);
 
 
@@ -622,6 +632,38 @@ function customScriptsAndStyles()
 	);
 
 	wp_localize_script('main', 'defaults', $l10n );
+}
+
+/**
+ * Get featured Event
+ * @return mixed --- post object if success | false if not
+ */
+function getFeaturedEvent()
+{
+	$args = array(
+		'posts_per_page'   => 1,
+		'offset'           => 0,
+		'category'         => '',
+		'orderby'          => 'post_date',
+		'order'            => 'DESC',
+		'include'          => '',
+		'exclude'          => '',
+		'meta_query' 	   => array(
+			array(
+				'key'   => 'aeo_featured',
+				'value' => 'on'
+			)
+		),
+		'post_type'        => 'event',
+		'post_mime_type'   => '',
+		'post_parent'      => '',
+		'post_status'      => 'publish',
+		'suppress_filters' => true 
+	);
+
+	$posts = get_posts($args);
+	if(count($posts)) return $posts[0];
+	return false;
 }
 
 
