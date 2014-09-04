@@ -33,6 +33,7 @@ if ( post_password_required() )
 					'style'       => 'ol',
 					'short_ping'  => true,
 					'avatar_size' => 74,
+					'callback'    => 'ashaComment'
 				) );
 			?>
 		</ol><!-- .comment-list -->

@@ -32,10 +32,7 @@ abstract class Slider{
 		{
 			foreach ($slides as &$slide) 
 			{
-				if(has_post_thumbnail($slid->ID))
-				{
-					$html[] = $this->wrapSlide($slide);
-				}
+				$html[] = $this->wrapSlide($slide);
 			}
 			return $this->wrapSlider(implode('', $html));
 		}
@@ -50,7 +47,7 @@ abstract class Slider{
 	private function wrapSlider($slides)
 	{
 		ob_start();
-		?>
+		?> 
 	    <div class="<?php echo $this->slider_class; ?>">
 			<aside>
 				<ul class="slides">					

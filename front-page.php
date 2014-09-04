@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * The template for displaying all pages.
  *
@@ -43,44 +43,7 @@ $featured_event = getFeaturedEvent();
 		}
 		?>
 		
-		<div class="posts-home cf">
-		  <div class="center-box">
-			  <ul>
-				  <li>
-					  <article>
-						  <figure><img src="<?php echo get_template_directory_uri(); ?>/images/upload/img_02.jpg" alt=" "></figure>
-							<header>
-							  <h2><a href="#">Featured Post Headline</a></h2>
-							</header>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod m tellus sed sollicitudin. Vestibulum cursus venenatis vestibulum.</p>
-							<a href="#" class="more">Learn more</a>
-						</article>
-					</li>
-					
-					<li>
-					  <article>
-						  <figure><img src="<?php echo get_template_directory_uri(); ?>/images/upload/img_03.jpg" alt=" "></figure>
-							<header>
-							  <h2><a href="#">Featured Post Headline</a></h2>
-							</header>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod m tellus sed sollicitudin. Vestibulum cursus venenatis vestibulum.</p>
-							<a href="#" class="more">Learn more</a>
-						</article>
-					</li>
-					
-					<li>
-					  <article>
-						  <figure><img src="<?php echo get_template_directory_uri(); ?>/images/upload/img_04.jpg" alt=" "></figure>
-							<header>
-							  <h2><a href="#">Featured Post Headline</a></h2>
-							</header>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas euismod m tellus sed sollicitudin. Vestibulum cursus venenatis vestibulum.</p>
-							<a href="#" class="more">Learn more</a>
-						</article>
-					</li>
-				</ul>
-			</div>
-		</div>
+		<?php get_sidebar('featured_posts'); ?>
 		
 		<div class="tweet-home cf">
 		<?php echo $slidertwitter->getHTML(); ?>

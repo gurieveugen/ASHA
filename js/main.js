@@ -24,6 +24,14 @@ jQuery(window).load(function() {
 		directionNav: false
 	});
 
+	jQuery(defaults.twitter_rotator_widget).flexslider({
+		animation: "slide",
+		selector: "ul > li",
+		slideshowSpeed: rotator_delay*1000,
+		controlNav: false,
+		directionNav: false
+	});
+
 	// ==============================================================
 	// Remove field notification
 	// ==============================================================
@@ -51,6 +59,26 @@ function actionSlide(event, obj)
 	var href   = action.attr('href');
 	
 	action.parent().parent().find('aside').flexslider(href);
+	event.preventDefault();
+}
+
+function searchBoxShow(event)
+{
+	var message = jQuery('#modal-search');
+	if (message.css('display') != 'block') 
+	{
+		message.show();
+
+		var firstClick = true;
+		jQuery(document).bind('click.modal_search', function(e) {
+			if (!firstClick && jQuery(e.target).closest('#modal-search').length == 0) 
+			{
+				message.hide();
+				jQuery(document).unbind('click.modal_search');
+			}
+			firstClick = false;
+		});
+	}
 	event.preventDefault();
 }
 

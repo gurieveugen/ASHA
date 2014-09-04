@@ -23,10 +23,10 @@
 						<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?>
 		<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentythirteen' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 						<?php else : ?>
-						<p><?php the_excerpt(); ?> <a href="<?php the_permalink(); ?>" class="more">READ MORE >></a></p>
+						<?php the_excerpt(); ?> 
 						<?php endif; // is_single() ?>
 						<footer>
-							<span><?php the_date('d M, Y') ?></span>
+							<span><?php echo get_the_date('d M, Y'); ?></span>
 							<span class="comments"><?php comments_number( '0', '1', '%' ); ?></span>
 							<span class="autor"><?php the_author(); ?></span>
 							<span class="categories"><?php the_category(', '); ?></span>
@@ -36,12 +36,15 @@
 					<?php if ( is_single() ) : ?>
 					<div class="share-post cf">
 						<h4>Share this:</h4>
-						<ul>
+						<span class='st_facebook_hcount' displayText='Facebook'></span>
+						<span class='st_twitter_hcount' displayText='Tweet'></span>
+						<span class='st_pinterest_hcount' displayText='Pinterest'></span>
+						<!-- <ul>
 							<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/upload/test_01.gif" alt=" " style="display:block;"></a></li>
 							<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/upload/test_02.gif" alt=" " style="display:block;"></a></li>
 							<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/upload/test_03.gif" alt=" " style="display:block;"></a></li>
 							<li><a href="#"><img src="<?php echo get_template_directory_uri(); ?>/images/upload/test_04.gif" alt=" " style="display:block;"></a></li>
-						</ul>
+						</ul> -->
 					</div>					
 					<?php endif; // is_single() ?>
 				</article>

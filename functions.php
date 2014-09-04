@@ -216,36 +216,6 @@ function twentythirteen_wp_title( $title, $sep ) {
 }
 add_filter( 'wp_title', 'twentythirteen_wp_title', 10, 2 );
 
-/**
- * Registers two widget areas.
- *
- * @since Twenty Thirteen 1.0
- *
- * @return void
- */
-function twentythirteen_widgets_init() {
-	register_sidebar( array(
-		'name'          => __( 'Main Widget Area', 'twentythirteen' ),
-		'id'            => 'sidebar-1',
-		'description'   => __( 'Appears in the footer section of the site.', 'twentythirteen' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
-
-	register_sidebar( array(
-		'name'          => __( 'Secondary Widget Area', 'twentythirteen' ),
-		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears on posts and pages in the sidebar.', 'twentythirteen' ),
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
-		'before_title'  => '<h3 class="widget-title">',
-		'after_title'   => '</h3>',
-	) );
-}
-add_action( 'widgets_init', 'twentythirteen_widgets_init' );
-
 if ( ! function_exists( 'twentythirteen_paging_nav' ) ) :
 /**
  * Displays navigation to next/previous set of posts when applicable.
@@ -534,12 +504,19 @@ add_action( 'customize_preview_init', 'twentythirteen_customize_preview_js' );
 //        /____/                           
 
 require_once 'includes/__.php';
+require_once 'includes/widget_featured_post.php';
+require_once 'includes/widget_featured_event.php';
+require_once 'includes/widget_e_newsletter.php';
+require_once 'includes/widget_twitter.php';
 
 // ==============================================================
 // HOOKS
 // ==============================================================
 add_image_size('slider-image', 1300, 419, true);
-add_action( 'wp_enqueue_scripts', 'customScriptsAndStyles');
+add_action('wp_enqueue_scripts', 'customScriptsAndStyles');
+add_action('widgets_init', 'widgetsInit');
+remove_filter('the_content', 'wpautop');
+add_filter('excerpt_more', 'newExcerptMore');
 
 $ccollection_social_networks = new Controls\ControlsCollection(
 	array(		
@@ -624,11 +601,12 @@ function customScriptsAndStyles()
 	$rotator_delay = $rotator_delay ? $rotator_delay : 5;
 
 	$l10n = array(
-		'slider_delay'    => $slider_delay,
-		'slider_count'    => $slider_count,
-		'slider'          => '.slider-home aside',
-		'twitter_rotator' => '.center-box aside',
-		'rotator_delay'   => $rotator_delay
+		'slider_delay'           => $slider_delay,
+		'slider_count'           => $slider_count,
+		'slider'                 => '.slider-home aside',
+		'twitter_rotator'        => '.center-box aside',
+		'twitter_rotator_widget' => '.widget-tweet aside',
+		'rotator_delay'          => $rotator_delay
 	);
 
 	wp_localize_script('main', 'defaults', $l10n );
@@ -666,7 +644,126 @@ function getFeaturedEvent()
 	return false;
 }
 
+/**
+ * Register custom sidebar
+ */
+function widgetsInit()
+{
+	register_sidebar(array(
+			'name'          => __( 'Featured posts Sidebar', 'ASHA' ),
+			'id'            => 'featured-posts-sidebar',
+			'description'   => __( 'Sidebar for featured posts', 'ASHA' ),
+			'before_widget' => '<li id="%1$s" class="widget %2$s"><article>',
+			'after_widget'  => '</article></li>',
+			'before_title'  => '<h2 class="widget-title">',
+			'after_title'   => '</h2>'
+		) 
+	);
 
+	register_sidebar(array(
+			'name'          => __( 'Footer Sidebar', 'ASHA' ),
+			'id'            => 'footer-sidebar',
+			'description'   => __( 'The footer sidebar', 'ASHA' ),
+			'before_widget' => '<div id="%1$s" class="widget-footer %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>'
+		) 
+	);
+
+	register_sidebar(array(
+			'name'          => __( 'Right Sidebar', 'ASHA' ),
+			'id'            => 'right-sidebar',
+			'description'   => __( 'The right sidebar', 'ASHA' ),
+			'before_widget' => '<div id="%1$s" class="cf %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title">',
+			'after_title'   => '</h3>'
+		) 
+	);
+
+	register_widget('FeaturedPost');
+	register_widget('FeaturedEvent');
+	register_widget('ENewsletter');
+	register_widget('TwitterWidget');
+}
+
+function the_breadcrumb() 
+{
+    if (!is_front_page()) 
+    {
+        echo '<a href="';
+        echo get_option('home');
+        echo '">HOME';
+        echo "</a> » ";
+        if (is_category() || is_single()) 
+        {
+            the_category(' ');
+            if (is_single()) 
+            {
+                echo "  &#x3E; ";
+                the_title();
+            }
+        } 
+        elseif (is_page()) 
+        {
+            echo the_title();
+        }
+    }
+    else 
+    {
+        echo 'HOME';
+    }
+}
+
+function newExcerptMore( $more ) 
+{
+	return '<a href="'.get_permalink().'" class="more">READ MORE &#x3E;&#x3E;</a>';
+}
+
+function ashaComment($comment, $args, $depth) 
+{
+	$GLOBALS['comment'] = $comment;
+	extract($args, EXTR_SKIP);
+
+	if ( 'div' == $args['style'] ) {
+		$tag = 'div';
+		$add_below = 'comment';
+	} else {
+		$tag = 'li';
+		$add_below = 'div-comment';
+	}
+?>
+	<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+	<?php if ( 'div' != $args['style'] ) : ?>
+	<div id="div-comment-<?php comment_ID() ?>" class="comment-body tf">
+	<?php endif; ?>
+	<div class="comment-author vcard">
+	<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+	<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>' ), get_comment_author_link() ); ?>
+	</div>
+	<?php if ( $comment->comment_approved == '0' ) : ?>
+		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+		<br />
+	<?php endif; ?>
+
+	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+		<?php
+			/* translators: 1: date, 2: time */
+			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), '  ', '' );
+		?>
+	</div>
+
+	<?php comment_text(); ?>
+
+	<div class="reply">
+	<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	</div>
+	<?php if ( 'div' != $args['style'] ) : ?>
+	</div>
+	<?php endif; ?>
+<?php
+}
 
 
 

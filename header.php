@@ -42,6 +42,8 @@ $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" t
 	<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
 	<?php wp_head(); ?>
+	<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+	<script type="text/javascript">stLight.options({publisher: "f64403eb-eba6-4027-9f28-f13988c3b952", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
 <script>
 	(function($) {
 	$(function() {
@@ -52,17 +54,12 @@ $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" t
 </head>
 
 <body <?php body_class(); ?>>
-<div id="modal-search" style="display: none; width: 200px;">
-    <div class="content" style="width: 500px;">
-    	<?php get_search_form(TRUE); ?>
-    </div>
-</div>
 <div class="global-box cf">
   <header id="header" class="cf">
     <div class="center-box">
 		  <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>
 			<div class="top-header">
-			  	<a href="#" class="login-link">MEMBER LOGIN</a>
+			  	<a href="<?php echo wp_login_url(); ?>" class="login-link">MEMBER LOGIN</a>
 				<ul class="share-header">
 					<?php echo implode('', $buttons); ?>
 				</ul>
@@ -70,8 +67,13 @@ $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" t
 			</div>
 			
 			<nav class="main-menu cf">
-			  <div class="search-box">
-					<a href="#modal-search" class="btn-search boxer">Search</a>
+			  	<div class="search-box" style="position: relative;">
+					<a href="#" class="btn-search" onclick="searchBoxShow(event)">Search</a>
+					<div id="modal-search" style="display: none; position: absolute; width: 200px; top: 60px; left: -210px">
+					    <div class="content" style="width: 500px;">
+					    	<?php get_search_form(TRUE); ?>
+					    </div>
+					</div>
 				</div>
 			  <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false ) ); ?>
 			</nav>
