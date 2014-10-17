@@ -1,0 +1,422 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"get_sea",
+				"get_search_query"
+			],
+			[
+				"prin",
+				"printf"
+			],
+			[
+				"wp_en",
+				"wp_enqueue_style"
+			],
+			[
+				"get_template_di",
+				"get_template_directory_uri"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"cco",
+				"ccollection_main_slider"
+			],
+			[
+				"wp_enque",
+				"wp_enqueue_script"
+			],
+			[
+				"re",
+				"relative"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/seejay/Documents/GitHub/imcreator.com/functions.php",
+			"settings":
+			{
+				"buffer_size": 18779,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"selected_items":
+		[
+			[
+				"auto",
+				"Tag: Auto-Format Tags on Document"
+			],
+			[
+				"html",
+				"Set Syntax: HTML5"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"gist",
+				"Gist: Insert Gist"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"singleton",
+				"Snippet: WordPress Plugin Boilerplate (Singleton)"
+			],
+			[
+				"auo",
+				"Autoprefix CSS"
+			],
+			[
+				"aut",
+				"Autoprefix CSS"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 583.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/seejay/Documents/GitHub/imcreator.com"
+	],
+	"file_history":
+	[
+		"/Users/seejay/Documents/GitHub/ASHA/author.php",
+		"/Users/seejay/Documents/GitHub/ASHA/archive.php",
+		"/Users/seejay/Documents/GitHub/ASHA/sidebar-footer.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/widget_e_newsletter.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/widget_featured_event.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/widget_featured_post.php",
+		"/Users/seejay/Documents/GitHub/ASHA/footer.php",
+		"/Users/seejay/Documents/GitHub/ASHA/sidebar-featured_posts.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/sdk/TwitterOAuth/twitteroauth.php",
+		"/Users/seejay/Documents/GitHub/ASHA/js/main.js",
+		"/Users/seejay/Documents/GitHub/ASHA/functions.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/controls/checkbox.php",
+		"/Users/seejay/Documents/GitHub/ASHA/header.php",
+		"/Users/seejay/Documents/GitHub/ASHA/front-page.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/__.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/slider.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/slidermain.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/slidertwitter.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/slide.php",
+		"/Users/seejay/Documents/GitHub/ASHA/includes/slideragregator.php",
+		"/Users/seejay/Library/Application Support/Sublime Text 3/Packages/User/Gist.sublime-settings",
+		"/Users/seejay/Documents/GitHub/ASHA/home.html",
+		"/Users/seejay/Library/Application Support/Sublime Text 3/Packages/Default/Default (OSX).sublime-keymap",
+		"/Users/seejay/Library/Application Support/Sublime Text 3/Packages/User/Default (OSX).sublime-keymap",
+		"/Users/seejay/Library/Application Support/Sublime Text 3/Packages/User/comment",
+		"/private/etc/apache2/extra/httpd-vhosts.conf",
+		"/Users/seejay/.bash_profile",
+		"/etc/hosts",
+		"/private/etc/apache2/extra/httpd-bhosts.conf",
+		"/Users/seejay/sites/socialwall/index.php",
+		"/etc/apache2/httpd.conf",
+		"/Users/seejay/sites/socialwall/index.html",
+		"/etc/apache2/extra/httpd-vhosts.conf",
+		"/Users/seejay/sites/feed/index.php",
+		"/Users/seejay/.bashrc",
+		"/Users/seejay/.bash_rofile",
+		"/Users/seejay/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Applications/Utilities/Boot Camp Assistant.app/Contents/Info.plist",
+		"/Users/seejay/Documents/Work/29.08.2014/trontech.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/torica.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/thefist.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/popmagazine.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/ozmotox.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/one2onemedia.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/nwrc.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/motordriven.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/metalshop.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/lightstation.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/lalaorange.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/ifec.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/harlowonline.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/goprofessionals.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/glasscandles.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/excapades.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/escapenow.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/energy21c.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/e1networks.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/creativewealth101.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/comfortrugs.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/chemb.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/carnivalmedia.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/belife.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/austrings.com.au/upload/wp-config.php",
+		"/Users/seejay/Documents/Work/29.08.2014/asicc.com.au/upload/wp-config.php"
+	],
+	"find":
+	{
+		"height": 38.0
+	},
+	"find_in_files":
+	{
+		"height": 106.0,
+		"where_history":
+		[
+			"/Users/seejay/Documents/GitHub/ASHA",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"modal-search",
+			"?>\n",
+			"comment-metadata",
+			"<p>",
+			"READ MORE >>",
+			"class=\"comments\"",
+			"$message",
+			"$(",
+			"$slide",
+			"slide",
+			"$slides",
+			"\"",
+			"url",
+			"title",
+			"footer-sidebar",
+			"register_sidebar",
+			"sidebar-right",
+			"featured-posts-sidebar",
+			"title",
+			"widgets_init",
+			"twentythirteen_widgets_init",
+			"$ccollection_event",
+			"meta_visible",
+			"'';",
+			"%s\">",
+			"slide",
+			"actionSlide",
+			"$post",
+			"post",
+			"#",
+			"next",
+			"slider_delay",
+			"class=\"slider-home",
+			"class=\"slider-home cf\"",
+			"$(",
+			"jquery",
+			"$(",
+			" != ''",
+			"$btn_twitter",
+			"twitter",
+			"gcfeed",
+			"feed",
+			"apple.com",
+			"/private/var/log/apache2/apple.com-",
+			"/Users/username/Sites/apple",
+			"/private/var/log/apache2/dummy-host2.example.com-",
+			"virtual",
+			"trontech_wp104",
+			"toricaco_wp902",
+			"wwwthefi_wp791",
+			"popmagaz_popmaga",
+			"ozmotoxc_wp631",
+			"one2onem_wp453",
+			"nwrccom_wp106",
+			"motordri_wpmotor",
+			"metalsho_wp441",
+			"lightsta_wp577",
+			"lalaoran_wp273",
+			"ifeccom_wp238",
+			"harlowon_wp351",
+			"wwwgopro_wp834",
+			"glasscan_wp994",
+			"wwwexcap_wp887",
+			"escapeno_wp482",
+			"energy21_wp66",
+			"wwwe1net_wp133",
+			"creative_wp97",
+			"wwwcomfo_wp370",
+			"wwwchemb_wp184",
+			"carnival_wp594",
+			"belifeco_wp681",
+			"austring_wp668",
+			"wwwasicc_wp327"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/seejay/Documents/GitHub/imcreator.com/functions.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 18779,
+						"regions":
+						{
+							"TagLint":
+							{
+								"flags": 2356,
+								"icon": "dot",
+								"regions":
+								[
+									[
+										5719,
+										5721
+									]
+								],
+								"scope": "variable.parameter"
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"is_xml": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 7277.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 35.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "imcreator.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 238.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

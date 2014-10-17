@@ -20,19 +20,13 @@ if ( post_password_required() )
 <div class="comments-box cf">
 
 	<?php if ( have_comments() ) : ?>
-		<h2 class="comments-title">
-			<?php
-				printf( _nx( 'One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'twentythirteen' ),
-					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>' );
-			?>
-		</h2>
 
-		<ol class="comment-list">
+		<ol class="comments-list cf">
 			<?php
 				wp_list_comments( array(
 					'style'       => 'ol',
 					'short_ping'  => true,
-					'avatar_size' => 74,
+					'avatar_size' => 45,
 					'callback'    => 'ashaComment'
 				) );
 			?>
@@ -42,7 +36,7 @@ if ( post_password_required() )
 			// Are there comments to navigate through?
 			if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :
 		?>
-		<nav class="navigation comment-navigation" role="navigation">
+		<nav class="navigation comment-navigation cf" role="navigation">
 			<h1 class="screen-reader-text section-heading"><?php _e( 'Comment navigation', 'twentythirteen' ); ?></h1>
 			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'twentythirteen' ) ); ?></div>
 			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'twentythirteen' ) ); ?></div>

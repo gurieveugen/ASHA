@@ -69,10 +69,8 @@ $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" t
 			<nav class="main-menu cf">
 			  	<div class="search-box" style="position: relative;">
 					<a href="#" class="btn-search" onclick="searchBoxShow(event)">Search</a>
-					<div id="modal-search" style="display: none; position: absolute; width: 200px; top: 60px; left: -210px">
-					    <div class="content" style="width: 500px;">
-					    	<?php get_search_form(TRUE); ?>
-					    </div>
+					<div id="modal-search">
+						<?php get_search_form(TRUE); ?>
 					</div>
 				</div>
 			  <?php wp_nav_menu( array( 'theme_location' => 'primary', 'container' => false ) ); ?>

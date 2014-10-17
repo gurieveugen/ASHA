@@ -173,7 +173,6 @@ hr {
 .attachment-meta:before,
 .attachment-meta a:before,
 .comment-awaiting-moderation:before,
-.comment-reply-link:before,
 .comment-reply-login:before,
 .comment-reply-title small a:before,
 .bypostauthor > .comment-body .fn:before,
@@ -1698,7 +1697,6 @@ footer.entry-meta {
 	}
 
 	.comment-author .fn,
-	.comment-reply-link,
 	.comment-reply-login {
 		color: #333;
 	}
@@ -1723,7 +1721,6 @@ footer.entry-meta {
 .attachment-meta:before,
 .attachment-meta a:before,
 .comment-awaiting-moderation:before,
-.comment-reply-link:before,
 .comment-reply-login:before,
 .comment-reply-title small a:before,
 .bypostauthor > .comment-body .fn:before,
@@ -1753,9 +1750,7 @@ footer.entry-meta {
 .comments-title,
 .comment-list,
 .comment-reply-title,
-.must-log-in,
-.comment-respond .comment-form,
-.comment-respond iframe {
+.must-log-in {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
@@ -1767,8 +1762,7 @@ footer.entry-meta {
 .sidebar .comment-list,
 .sidebar .must-log-in,
 .sidebar .comment-reply-title,
-.sidebar .comment-navigation,
-.sidebar .comment-respond .comment-form {
+.sidebar .comment-navigation {
 	max-width: 1040px;
 	padding-left: 60px;
 	padding-right: 376px;
@@ -1825,7 +1819,6 @@ footer.entry-meta {
 
 .comment-author .fn,
 .comment-author .url,
-.comment-reply-link,
 .comment-reply-login {
 	font-size: 14px;
 	font-style: normal;
@@ -1889,135 +1882,8 @@ footer.entry-meta {
 	top: -2px;
 }
 
-.comment-reply-link:before,
 .comment-reply-login:before {
 	content: "\f412";
 	margin-right: 3px;
 }
 
-/* Comment form */
-.comment-respond 
-{
-	padding:30px 0px;
-}
-
-.comment .comment-respond 
-{
-	margin-bottom:20px;
-	padding:20px;
-}
-
-.comment-reply-title 
-{
-  font-size:28px;
-}
-
-.sidebar .comment-list .comment-reply-title,
-.sidebar .comment-list .comment-respond .comment-form 
-{
-	padding:0;
-}
-
-.comment-form .comment-notes 
-{
-	margin-bottom:15px;
-}
-
-.comment-form .comment-form-author,
-.comment-form .comment-form-email,
-.comment-form .comment-form-url 
-{
-	margin-bottom:8px;
-}
-
-.comment-form [for="author"],
-.comment-form [for="email"],
-.comment-form [for="url"],
-.comment-form [for="comment"] 
-{
-	width:120px;
-	display:block;
-}
-
-.comment-form .required {
-	color: #ed331c;
-}
-
-.comment-form input[type="text"],
-.comment-form input[type="email"],
-.comment-form input[type="url"],
-.comment-form textarea 
-{
-	width:270px;
-	height:21px;
-	padding:8px 10px 8px 15px;
-	border:1px solid #535152;
-	background:none;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:15px;
-	line-height:21px;
-	color:#120c0f;
-	position:relative;
-}
-
-.comment-form textarea 
-{
-	width:550px;
-	height:200px;
-}
-
-.form-allowed-tags,
-.form-allowed-tags code 
-{
-	color:#686758;
-	font-size:12px;
-}
-
-.form-allowed-tags code 
-{
-	font-size:10px;
-	margin-left:3px;
-}
-
-.comment-list .pingback,
-.comment-list .trackback 
-{
-	padding-top:24px;
-}
-
-.comment-navigation 
-{
-	padding:20px 0 30px;
-}
-
-.no-comments 
-{
-	font-size:20px;
-	margin:0;
-	padding:40px 0;
-	text-align:center;
-}
-
-/* Form fields, general styles first. */
-/* Buttons */
-.comment-respond input[type="submit"] 
-{
-	padding:8px 10px 8px 10px;
-	border:1px solid #262324;
-	background:#938476;
-	font-family:'Roboto', sans-serif;
-	font-size:14px;
-	font-weight:700;
-	line-height:14px;
-	text-transform:uppercase;
-	color:#FFFFFF;
-	cursor:pointer;
-}
-
-.comment-respond input[type="submit"]:hover,
-.comment-respond input[type="submit"]:focus,
-.comment-respond input[type="submit"]:active
-{
-  background:#938476;
-	color:#FFFFFF;
-}

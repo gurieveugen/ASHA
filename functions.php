@@ -515,7 +515,6 @@ require_once 'includes/widget_twitter.php';
 add_image_size('slider-image', 1300, 419, true);
 add_action('wp_enqueue_scripts', 'customScriptsAndStyles');
 add_action('widgets_init', 'widgetsInit');
-remove_filter('the_content', 'wpautop');
 add_filter('excerpt_more', 'newExcerptMore');
 
 $ccollection_social_networks = new Controls\ControlsCollection(
@@ -705,9 +704,17 @@ function the_breadcrumb()
                 the_title();
             }
         } 
-        elseif (is_page()) 
+        else if (is_page()) 
         {
             echo the_title();
+        }
+        else if (is_home())
+        {
+        	echo 'Blog';
+        }
+        else if(is_search())
+        {
+        	echo get_search_query();
         }
     }
     else 
@@ -736,31 +743,23 @@ function ashaComment($comment, $args, $depth)
 ?>
 	<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
 	<?php if ( 'div' != $args['style'] ) : ?>
-	<div id="div-comment-<?php comment_ID() ?>" class="comment-body tf">
+	<article id="div-comment-<?php comment_ID() ?>">
 	<?php endif; ?>
-	<div class="comment-author vcard">
-	<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-	<?php printf( __( '<cite class="fn">%s</cite> <span class="says">says:</span>' ), get_comment_author_link() ); ?>
-	</div>
-	<?php if ( $comment->comment_approved == '0' ) : ?>
-		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
-		<br />
-	<?php endif; ?>
-
-	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+	<figure><?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?></figure>
+	<div class="txt">
+	<p><?php printf( __( '<span class="autor"><a href="%s">%s</span></a>' ), htmlspecialchars( get_comment_link( $comment->comment_ID ) ), get_comment_author() ); ?> | 
 		<?php
 			/* translators: 1: date, 2: time */
-			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), '  ', '' );
-		?>
-	</div>
-
-	<?php comment_text(); ?>
-
-	<div class="reply">
-	<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
-	</div>
+			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?><?php edit_comment_link( __( '(Edit)' ), '  ', '' );?></p>
+		<?php if ( $comment->comment_approved == '0' ) : ?>
+		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+		<br />
+	  <?php endif; ?>
+	  <?php comment_text(); ?>
+	  <?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+  </div>
 	<?php if ( 'div' != $args['style'] ) : ?>
-	</div>
+	</article>
 	<?php endif; ?>
 <?php
 }
