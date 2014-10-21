@@ -54,7 +54,26 @@ $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" t
 </head>
 
 <body <?php body_class(); ?>>
+<!-- Place this portion of the code in the header or footer of the website -->
+
+
+<script type="text/javascript">var p="http",d="static";if(document.location.protocol=="https:"){p+="s";d="engine";}var z=document.createElement("script");z.type="text/javascript";z.async=true;z.src=p+"://"+d+".multiview.com/ados.js";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(z,s);</script>
+<script type="text/javascript">
+var ados = ados || {};
+ados.run = ados.run || [];
+ados.run.push(function() {
+/* load placement for account: Multiview, site: ASHAORGweb - American School Health Association - MultiWeb, size: 728x90 - Leaderboard, zone: ASHAORGweb - Leaderboard*/
+ados_add_placement(4466, 58262, "mvLeaderboard", 4).setZone(62691);
+ados_setDomain('engine.multiview.com');
+ados_load();
+});</script>
+
+
+
+<!-- Place this code where the box Ad is to appear on the site -->
+
 <div class="global-box cf">
+	<div id="mvLeaderboard" style="text-align:center;"></div>
   <header id="header" class="cf">
     <div class="center-box">
 		  <h1 class="logo"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>"><?php bloginfo( 'name' ); ?></a></h1>

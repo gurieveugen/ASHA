@@ -20,7 +20,7 @@ $buttons = array(
 	!empty($btn_twitter) ? sprintf('<li class="tweet"><a href="%s" target="_blank">tweet</a></li>', $btn_twitter) : '',
 	!empty($btn_facebook) ? sprintf('<li class="facebook"><a href="%s" target="_blank">facebook</a></li>', $btn_facebook) : '',
 	!empty($btn_linkedin) ? sprintf('<li class="in"><a href="%s" target="_blank">in</a></li>', $btn_linkedin) : '',
-	!empty($btn_mail) ? sprintf('<li class="mail"><a href="%s" target="_blank">mail</a></li>', $btn_mail) : '',
+	!empty($btn_mail) ? sprintf('<li class="mail"><a href="mailto:%s" target="_blank">mail</a></li>', $btn_mail) : '',
 );
 
 ?>
