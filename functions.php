@@ -1,4 +1,11 @@
 <?php
+if($_GET['debug'] = '1')
+{
+	ini_set('display_startup_errors',1);
+	ini_set('display_errors',1);
+	error_reporting(-1);
+	set_time_limit (6000);
+}
 /**
  * Twenty Thirteen functions and definitions.
  *
@@ -508,6 +515,7 @@ require_once 'includes/widget_featured_post.php';
 require_once 'includes/widget_featured_event.php';
 require_once 'includes/widget_e_newsletter.php';
 require_once 'includes/widget_twitter.php';
+require_once 'includes/widget_shortcode.php';
 
 // ==============================================================
 // HOOKS
@@ -559,16 +567,27 @@ $ccollection_twitter = new Controls\ControlsCollection(
 	)
 );
 
+$ccollection_facebook = new Controls\ControlsCollection(
+	array(
+		new Controls\Text('Page', array('defult-value' => 'whitehouse'), array('placeholder' => 'Enter facebook page')),
+		new Controls\Text('Count', array('defult-value' => '3'), array('placeholder' => 'Post per feed')),
+		new Controls\Text('App id', array('defult-value' => '802383316448078'), array('placeholder' => 'Enter app id')),
+		new Controls\Text('App key', array('defult-value' => '970b61246640d52ac45bfa8bf596e6d5'), array('placeholder' => 'Enter app key')),
+	)
+);
+
 $section_social_networks = new Admin\Section('Social networks', array('prefix' => 'sn_'), $ccollection_social_networks);
 $section_main_slider     = new Admin\Section('Main slider options', array('prefix' => 'mso_'), $ccollection_main_slider);
 $section_twitter         = new Admin\Section('Twitter rotator', array('prefix' => 'tw_r_'), $ccollection_twitter);
+$section_facebook        = new Admin\Section('Facebook feed', array('prefix' => 'fb_'), $ccollection_facebook);
 
-$theme_settings          = new Admin\Page('Theme settings', array(), array($section_social_networks, $section_main_slider, $section_twitter));
+$theme_settings          = new Admin\Page('Theme settings', array(), array($section_social_networks, $section_main_slider, $section_twitter, $section_facebook ));
 $post_type_slider        = new Admin\PostType('Slider', array('icon_code' => 'f03e', 'supports' => array('title', 'editor', 'thumbnail', 'excerpt')));
 $post_type_event         = new Admin\PostType('Event', array('icon_code' => 'f073'));
 $meta_box_event          = new Admin\MetaBox('Additional event options', array('post_type' => 'event', 'prefix' => 'aeo_'), $ccollection_event);
 $meta_box_slider         = new Admin\MetaBox('Additional options', array('post_type' => 'slider'), $ccollection_slider_urls);
 
+$facebook_feed = new FacebookFeed();
 
 /**
  * Add some Scripts or Styles
@@ -605,7 +624,8 @@ function customScriptsAndStyles()
 		'slider'                 => '.slider-home aside',
 		'twitter_rotator'        => '.center-box aside',
 		'twitter_rotator_widget' => '.widget-tweet aside',
-		'rotator_delay'          => $rotator_delay
+		'rotator_delay'          => $rotator_delay,
+		'facebook_page'          => (string) get_option( 'sn_facebook_page' )
 	);
 
 	wp_localize_script('main', 'defaults', $l10n );
@@ -685,6 +705,7 @@ function widgetsInit()
 	register_widget('FeaturedEvent');
 	register_widget('ENewsletter');
 	register_widget('TwitterWidget');
+	register_widget('WShortCode');
 }
 
 function the_breadcrumb() 

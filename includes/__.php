@@ -31,7 +31,7 @@ class __{
 	 */
 	public static function autoloader($class) 
 	{			
-		$path = sprintf('%s%s.php', GCLIB_DIR, strtolower($class));	
+		$path = sprintf('%s%s.php', GCLIB_DIR, $class);	
 		$path = str_replace('\\', '/', $path);	
 		
 		if (file_exists($path))

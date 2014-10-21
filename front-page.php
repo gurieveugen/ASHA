@@ -23,11 +23,9 @@ echo $slidermain->getHTML();
 
 $featured_event = getFeaturedEvent();
 ?>
-		
 		<div class="enewsletter-home">
 			<?php echo do_shortcode('[contact-form-7 id="72" title="Sign up for our E-newsletter"]'); ?>
 		</div>
-		
 		<?php
 		if($featured_event)
 		{
@@ -41,11 +39,8 @@ $featured_event = getFeaturedEvent();
 			</div>
 		<?php
 		}
-		?>
-		
+		?>	
 		<?php get_sidebar('featured_posts'); ?>
-		
 		<div class="tweet-home cf">
 		<?php echo $slidertwitter->getHTML(); ?>
-		</div>
-<?php get_footer(); ?>
+		</div><?php get_footer(); ?>

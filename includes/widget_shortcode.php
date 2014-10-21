@@ -1,6 +1,6 @@
 <?php
 
-class ENewsletter extends WP_Widget{
+class WShortCode extends WP_Widget{
 	//                    __  __              __    
 	//    ____ ___  ___  / /_/ /_  ____  ____/ /____
 	//   / __ `__ \/ _ \/ __/ __ \/ __ \/ __  / ___/
@@ -8,7 +8,7 @@ class ENewsletter extends WP_Widget{
 	// /_/ /_/ /_/\___/\__/_/ /_/\____/\__,_/____/  	                                             
 	function __construct() 
 	{		
-		parent::__construct('e-newsletter', __('Sign up for our E-newsletter'), array( 'description' => __('Add a signup form to sidebar.'), 'classname' => 'widget-newsletter'));
+		parent::__construct('shortcode', __('Widget shortcode'), array( 'description' => __('Add a shortcode to sidebar.'), 'classname' => 'widget-shortcode'));
 	}
 
 	function widget($args, $instance) 

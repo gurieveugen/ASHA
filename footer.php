@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * The template for displaying the footer.
  *
@@ -23,9 +23,7 @@ $buttons = array(
 	!empty($btn_mail) ? sprintf('<li class="mail"><a href="mailto:%s" target="_blank">mail</a></li>', $btn_mail) : '',
 );
 
-?>
-
-	</section>
+?></section>
 	
 	<footer id="footer" class="cf">
 	    <?php get_sidebar('footer'); ?>

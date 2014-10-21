@@ -39,7 +39,7 @@ class SliderMain extends Slider{
 		{
 			foreach ($slides as &$slide) 
 			{
-				if(has_post_thumbnail($slid->ID))
+				if(has_post_thumbnail($slide->ID))
 				{
 					$res[] = $slide;
 				}
