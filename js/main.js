@@ -45,6 +45,14 @@ jQuery(window).load(function() {
 	// Boxer open
 	// ==============================================================
 	jQuery(".boxer").boxer();
+	// ==============================================================
+	// Load facebook posts
+	// ==============================================================
+	if(jQuery('.facebook-post').length)
+	{
+		var facebook = new Facebook(facebook_feed);
+		facebook.getItems();
+	}
 });
 
 /**

@@ -40,7 +40,9 @@ class FacebookFeed{
 	 */
 	public function scriptsAndStyles()
 	{
-		wp_enqueue_script( 'facebook-feed', get_template_directory_uri().'/js/facebook.js', array('jquery') );
+		wp_enqueue_script( 'string-format', get_template_directory_uri().'/js/string.format.js', array('jquery') );
+		wp_enqueue_script( 'facebook-feed', get_template_directory_uri().'/js/facebook.js', array('jquery', 'string-format') );
+
 		wp_localize_script( 
 			'facebook-feed', 
 			'facebook_feed', 
