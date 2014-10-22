@@ -104,6 +104,11 @@ function Facebook(options){
 			el.link
 		);
 
+		if(typeof(el.likes) == 'undefined')
+		{
+			el.likes = {summary:{total_count : 0}};
+		}
+
 		d.setTime(Date.parse(el.created_time));
 
 		panel.push('<div class="meta">');

@@ -20,7 +20,7 @@ class FeaturedPost extends WP_Widget{
 		$url        = !empty($instance['url']) ? $instance['url'] : '#';
 		$learn_more = sprintf('<a class="more" href="%s">Learn more</a>', $url);
 		$title      = !empty($instance['title']) ? sprintf('<h2><a href="%s">%s</a></h2>', $url, $instance['title']) : '';
-		$subtitle   = $deal->meta['deal_sub_title'] != '' ? $deal->meta['deal_sub_title'] : '';
+		// $subtitle   = $deal->meta['deal_sub_title'] != '' ? $deal->meta['deal_sub_title'] : '';
 		?>		
 		<?php if(!empty($instance['image_url'])) printf('<figure><img alt=" " src="%s"></figure>', $instance['image_url']);	?>			
 		<header>
