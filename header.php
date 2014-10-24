@@ -12,12 +12,14 @@
 $btn_twitter  = (string) get_option('sn_twitter_url');
 $btn_facebook = (string) get_option('sn_facebook_url');
 $btn_linkedin = (string) get_option('sn_linkedin_url');
+$btn_youtube  = (string) get_option('sn_youtube_url');
 $btn_donate   = (string) get_option('sn_donate_url');
 
 $buttons = array(
 	!empty($btn_twitter) ? sprintf('<li class="tweet"><a href="%s" target="_blank">tweet</a></li>', $btn_twitter) : '',
 	!empty($btn_facebook) ? sprintf('<li class="facebook"><a href="%s" target="_blank">facebook</a></li>', $btn_facebook) : '',
-	!empty($btn_linkedin) ? sprintf('<li class="in"><a href="%s" target="_blank">in</a></li>', $btn_linkedin) : ''	
+	!empty($btn_linkedin) ? sprintf('<li class="in"><a href="%s" target="_blank">in</a></li>', $btn_linkedin) : '',
+	!empty($btn_youtube) ? sprintf('<li class="youtube"><a href="%s" target="_blank">youtube</a></li>', $btn_youtube) : '',	
 );
 
 $btn_donate   = !empty($btn_donate) ? sprintf('<a href="%s" class="btn-donate" target="_blank">DONATE</a>', $btn_donate) : '';

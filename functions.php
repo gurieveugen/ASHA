@@ -530,7 +530,8 @@ $ccollection_social_networks = new Controls\ControlsCollection(
 		new Controls\Text('Twitter URL', array('default-value' => 'http://www.twitter.com/whitehouse'), array('placeholder' => 'Enter your twitter account URL')),
 		new Controls\Text('Facebook URL', array('default-value' => 'http://www.facebook.com/whitehouse'), array('placeholder' => 'Enter your facebook page URL')),
 		new Controls\Text('Linkedin URL', array('default-value' => 'http://www.linkedin.com'), array('placeholder' => 'Enter your linkedin account URL')),
-		new Controls\Text('Donate URL', array(), array('placeholder' => 'Enter your donate URL'))
+		new Controls\Text('Donate URL', array(), array('placeholder' => 'Enter your donate URL')),
+		new Controls\Text('YouTube URL', array('default-value' => 'http://www.youtube.com'), array('placeholder' => 'Enter your youtube account URL')),
 	)
 );
 

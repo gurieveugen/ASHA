@@ -143,7 +143,7 @@ function Facebook(options){
 		panel.push(
 			String.Format(
 				'<li>{0} {1} at {2}:{3}</li>',
-				months[d.getMonth()-1],
+				months[d.getMonth()],
 				d.getDate(),
 				d.getHours(),
 				d.getMinutes()
